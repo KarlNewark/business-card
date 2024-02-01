@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-
+<html lang="en">
 
 <head>
   <title>Karl Newark - Retro Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="functionality.js"></script>
 </head>
 
 <body>
-  <div class="refresh"></div>
+  <div aria-hidden="true" class="refresh"></div>
 
-  <div style="padding-top:50px;background:transparent;color:white;"></div>
+  <div aria-hidden="true" style="padding-top:50px;background:transparent;color:white;"></div>
   <div id="shutdown-screen" class="shutdown-screen">
     <div class="shutdown-text scroll">
       It is now safe to turn off your computer...
       </div>
     </div>
 
-<div id="bootup-screen" class="bootup-screen">
+<div aria-hidden="true" id="bootup-screen" class="bootup-screen">
     <div id="boot-text" class="boot-text scroll">
         <pre>Starting Michaelsoft Binbows 3.1...
 
@@ -87,7 +88,7 @@ Configuring system...
     </div>
    
   </div>
-  <div class="window-container error-window" id="error-window" style="display: none;">
+  <div aria-hidden="true" class="window-container error-window" id="error-window" style="display: none;">
     <div class="window-header">
       <span class="window-title">Program Error</span>
       <!-- Optional close button for error window -->
@@ -102,3 +103,4 @@ Configuring system...
   </div>
 </body>
 
+</html>
