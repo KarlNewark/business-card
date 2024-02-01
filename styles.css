@@ -214,3 +214,67 @@ animation-play-state: running;
 .window-text p:first-child {
     margin-top: 0;
 }
+
+.window-text p:first-child {
+    margin-top: 0;
+}
+
+
+.window-container{
+  animation: glitch 10s linear infinite;
+}
+
+@keyframes glitch{
+  90.2%,96.4%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  94%,96%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  96.2%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+.window-container:before,
+.window-container:after{
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.window-container:before{
+  animation: glitchTop 10s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  90.2%,96.4%{
+    transform: translate(2px,-2px);
+  }
+  90.4%,96%{
+    transform: translate(-2px,2px);
+  }
+  96.2%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+.window-container:after{
+  animation: glitchBotom 15s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  90.2%,64%{
+    transform: translate(-2px,0);
+  }
+  90.4%,96%{
+    transform: translate(-2px,0);
+  }
+  96.2%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
