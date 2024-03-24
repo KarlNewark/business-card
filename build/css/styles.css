@@ -1,0 +1,455 @@
+@font-face {
+  font-family: "WIN95";
+  src: url("../fonts/W95FA.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Virtue";
+  src: url("../fonts/virtue.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body.binbows {
+  --font-family-headings: "WIN95", "Arial", sans-serif;
+  --font-family-body: "Arial", sans-serif;
+  --font-family-monospace: "Courier New", monospace;
+  --window-content-margin: 3px;
+  --window-background-color-window: var(--border-color-window);
+  --window-content-border-left: 1px solid black;
+  --window-content-border-top: 1px solid black;
+  --window-content-border-right: 1px solid rgb(194, 194, 194);
+  --window-content-border-bottom: 1px solid rgb(194, 194, 194);
+  --window-content-box-shadow: 1px 1px white, -1px -1px rgb(128, 128, 128);
+  --window-content-font-family: var(--font-family-body);
+  --background-color-body: #008080;
+  --color-default-text: black;
+  --header-title-text-colour: white;
+  --color-white: white;
+  --color-black: black;
+  --border-color-window: #c0c0c0;
+  --window-container-outline: none;
+  --window-container-box-shadow: 1px 1px rgb(140, 140, 140), 2px 2px rgb(0, 0, 0), -1px -1px rgb(222, 222, 222), -2px -2px white, -2px 2px white, 2px -2px black;
+  --box-shadow-color: #888888;
+  --window-header-background: #000080;
+  --window-header-padding: 5px 5px;
+  --close-button-background: var(--border-color-window);
+  --close-button-background-image: url(../images/windows-close.svg);
+  --link-color: blue;
+  --error-background: #8B0000;
+  --error-content-background: #FFF0F0;
+  --bootup-shutdown-background: black;
+  --shutdown-color: bisque;
+  --pdf-icon-color: #D40000;
+  --title-text-align: left;
+  --window-title-justify-content: left;
+  --window-header-fontsize: 1.2em;
+  --handle-display: none;
+  --window-header-flex-direction: row;
+  --window-header-margin: 2px;
+  --close-text-display: inline;
+  --window-object-count-border-left: 1px solid rgb(128, 128, 128);
+  --window-object-count-border-right: 1px solid white;
+  --window-object-count-border-top: 1px solid rgb(128, 128, 128);
+  --window-object-count-border-bottom: 1px solid white;
+  --window-object-count-font: var(--font-family-headings);
+  --window-object-count-margin: 2px;
+  --window-object-count-padding: 5px;
+  --window-object-count-display: block;
+  --window-object-count-box-shadow: none;
+  --window-object-count-background: none;
+  --window-object-count-text-align: left;
+  --window-object-count-binbows-text-display: inline;
+  --window-object-count-whack-text-display: none;
+}
+
+body.whack {
+  --font-family-headings: "Virtue", sans-serif;
+  --font-family-body: "Arial", sans-serif;
+  --font-family-monospace: "Courier New", monospace;
+  --window-content-margin: 5px;
+  --window-content-outline: none;
+  --window-content-border: 1px solid rgb(38, 38, 38);
+  --window-content-border-left: var(--window-content-border);
+  --window-content-border-top: var(--window-content-border);
+  --window-content-border-right: var(--window-content-border);
+  --window-content-border-bottom: var(--window-content-border);
+  --window-content-box-shadow: -1px -1px rgb(138, 138, 138), 1px 1px white;
+  --window-content-font-family: "geneva", sans-serif;
+  --window-background-color-window: var(--window-header-background);
+  --background-color-body: rgb(84 103 156);
+  --color-default-text: black;
+  --header-title-text-colour: black;
+  --color-white: white;
+  --color-black: black;
+  --border-color-window: rgb(186, 186, 186);
+  --window-container-outline: 1px solid rgb(38, 38, 38);
+  --window-container-box-shadow: 3px 3px 0px var(--box-shadow-color);
+  --box-shadow-color: none;
+  --window-header-background: rgba(204, 204, 204, 1);
+  --window-header-padding: 4px 4px;
+  --close-button-background: var(--border-color-window);
+  --close-button-background-image: url(../images/mac-close.svg);
+  --link-color: blue;
+  --error-background: inherit;
+  --error-content-background: white;
+  --bootup-shutdown-background: black;
+  --shutdown-color: bisque;
+  --pdf-icon-color: #D40000;
+  --title-text-align: center;
+  --window-title-justify-content: center;
+  --window-header-fontsize: 1.0em;
+  --handle-display: block;
+  --window-header-flex-direction: row-reverse;
+  --window-header-margin: 0;
+  --close-text-display: none;
+  --window-object-count-border-left: var(--window-content-border);
+  --window-object-count-border-right: var(--window-content-border);
+  --window-object-count-border-top: var(--window-content-border);
+  --window-object-count-border-bottom: var(--window-content-border);
+  --window-object-count-font: var(--window-content-font-family);
+  --window-object-count-margin: -6px 5px 4px 5px;
+  --window-object-count-padding: 0;
+  --window-object-count-display: block;
+  --window-object-count-box-shadow: 1px 1px white, -1px 0px rgb(128, 128, 128);
+  --window-object-count-background: rgb(237, 237, 237);
+  --window-object-count-text-align: center;
+  --window-object-count-binbows-text-display: none;
+  --window-object-count-whack-text-display: inline;
+}
+
+.window-title {
+  display: flex;
+  justify-content: var(--window-title-justify-content);
+  position: relative; /* Needed if you want the handles to be absolutely positioned */
+}
+
+.window-title-text {
+  padding: 0px 10px;
+}
+
+.handle {
+  flex-grow: 1;
+  background-color: #ccc;
+  background-image: linear-gradient(0deg, rgb(221, 221, 221) 25%, rgb(153, 153, 153) 25%, rgb(153, 153, 153) 50%, rgb(221, 221, 221) 50%, rgb(221, 221, 221) 75%, rgb(153, 153, 153) 75%, rgb(153, 153, 153) 100%);
+  background-size: 8px 8px;
+  display: var(--handle-display);
+}
+
+.pre-handle {
+  background-image: linear-gradient(0deg, rgb(238, 238, 238) 25%, #999999 25%, #999999 50%, rgb(238, 238, 238) 50%, rgb(238, 238, 238) 75%, #999999 75%, #999999 100%);
+  background-size: 8px 8px;
+  width: 2px;
+  display: var(--handle-display);
+}
+
+.post-handle {
+  background-image: linear-gradient(0deg, rgb(197, 197, 197) 25%, #999999 25%, #999999 50%, rgb(197, 197, 197) 50%, rgb(197, 197, 197) 75%, #999999 75%, #999999 100%);
+  background-size: 8px 8px;
+  width: 2px;
+  display: var(--handle-display);
+}
+
+body {
+  font-family: var(--font-family-headings);
+  background-color: var(--background-color-body);
+  color: var(--color-default-text);
+  margin: 0;
+  padding: 0;
+}
+
+.window-container {
+  border: 2px solid var(--border-color-window);
+  outline: var(--window-container-outline);
+  margin: 5% auto;
+  max-width: 600px;
+  width: 90%;
+  background-color: var(--window-background-color-window);
+  box-shadow: var(--window-container-box-shadow);
+}
+
+.window-header {
+  background-color: var(--window-header-background);
+  color: var(--header-title-text-colour);
+  padding: 5px 10px;
+  padding: var(--window-header-padding);
+  font-size: var(--window-header-fontsize);
+  display: flex;
+  flex-direction: var(--window-header-flex-direction);
+  align-items: center;
+  user-select: none;
+  cursor: grab;
+  align-items: stretch;
+  margin: var(--window-header-margin);
+}
+
+.window-title {
+  flex-grow: 1;
+  text-align: var(--title-text-align);
+}
+
+.close-button {
+  background-color: var(--close-button-background);
+  background-image: var(--close-button-background-image);
+  color: var(--color-black);
+  border: none;
+  cursor: pointer;
+  background-size: cover;
+  font-size: 0.8em;
+  min-width: 22px;
+}
+
+.close-text {
+  display: var(--close-text-display);
+}
+
+.window-content {
+  padding: 20px;
+  background-color: var(--color-white);
+  margin: var(--window-content-margin);
+  outline: var(--window-content-outline);
+  border: var(--window-content-border);
+  border-left: var(--window-content-border-left);
+  border-top: var(--window-content-border-top);
+  border-right: var(--window-content-border-right);
+  border-bottom: var(--window-content-border-bottom);
+  font-family: var(--window-content-font-family);
+  box-shadow: var(--window-content-box-shadow);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.system-font {
+  font-family: var(--font-family-monospace);
+}
+
+.pdf-icon {
+  vertical-align: middle;
+  margin-left: 5px;
+  fill: var(--pdf-icon-color);
+}
+
+.error-window {
+  margin-top: 20px;
+}
+
+.error-window .window-header {
+  background-color: var(--error-background);
+}
+
+.error-window .window-content {
+  background-color: var(--error-content-background);
+  color: var(--color-black);
+}
+
+.bootup-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bootup-shutdown-background);
+  color: var(--color-white);
+  display: flex;
+  font-family: var(--font-family-monospace);
+  z-index: 9999;
+}
+
+.shutdown-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bootup-shutdown-background);
+  color: var(--shutdown-color);
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  font-family: var(--font-family-monospace);
+  z-index: 9999;
+  display: none;
+}
+
+.shutdown-screen.present {
+  display: flex;
+}
+
+.fade-out {
+  animation: fadeOut 0.1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.bootup-screen .boot-text {
+  white-space: pre;
+  font-size: larger;
+  position: absolute;
+  height: 1000px;
+  overflow: hidden;
+}
+
+.bootup-screen .boot-text.scroll {
+  animation: scrollBootText 3s steps(1);
+}
+
+@keyframes scrollBootText {
+  0% {
+    height: 100px;
+  }
+  40% {
+    height: 450px;
+  }
+  70% {
+    height: 500px;
+  }
+  90% {
+    height: 1000px;
+  }
+}
+.bootup-screen .boot-text p {
+  margin: 5px 0;
+}
+
+@keyframes refresh {
+  0% {
+    bottom: 100%;
+  }
+  75% {
+    bottom: 0px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+.refresh {
+  float: left;
+  width: 200%;
+  height: 100px;
+  z-index: 8;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0, rgba(255, 255, 255, 0.4) 10%, rgba(0, 0, 0, 0.1) 100%);
+  opacity: 0.1;
+  position: fixed;
+  bottom: 0;
+  animation: refresh 15s linear infinite;
+}
+
+.window-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.window-object-count {
+  border-left: var(--window-object-count-border-left);
+  border-right: var(--window-object-count-border-right);
+  border-top: var(--window-object-count-border-top);
+  border-bottom: var(--window-object-count-border-bottom);
+  margin: var(--window-object-count-margin);
+  padding: var(--window-object-count-padding);
+  display: var(--window-object-count-display);
+  box-shadow: var(--window-object-count-box-shadow);
+  background: var(--window-object-count-background);
+  font-family: var(--window-object-count-font);
+  text-align: var(--window-object-count-text-align);
+}
+
+.window-object-count-binbows-text {
+  display: var(--window-object-count-binbows-text-display);
+}
+
+.window-object-count-whack-text {
+  display: var(--window-object-count-whack-text-display);
+}
+
+.photo {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 30px;
+}
+
+.window-text {
+  width: 100%;
+}
+
+@media (min-width: 540px) {
+  .window-content {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .photo {
+    width: 200px;
+    margin-right: 20px;
+  }
+}
+.window-text p:first-child {
+  margin-top: 0;
+}
+
+.window-container {
+  animation: glitch 10s linear infinite;
+}
+
+@keyframes glitch {
+  90.2%, 96.4% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  94%, 96% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  96.2% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+.window-container:before,
+.window-container:after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.window-container:before {
+  animation: glitchTop 10s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop {
+  90.2%, 96.4% {
+    transform: translate(2px, -2px);
+  }
+  90.4%, 96% {
+    transform: translate(-2px, 2px);
+  }
+  96.2% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+.window-container:after {
+  animation: glitchBottom 15s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBottom {
+  90.2%, 64% {
+    transform: translate(-2px, 0);
+  }
+  90.4%, 96% {
+    transform: translate(-2px, 0);
+  }
+  96.2% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}

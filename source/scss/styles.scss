@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'WIN95';
-  src: url('W95FA.otf') format('opentype');
+  src: url('../fonts/W95FA.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Virtue';
-  src: url('virtue.ttf') format('truetype');
+  src: url('../fonts/virtue.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -35,13 +35,13 @@ body.binbows {
   --color-black: black;
   --border-color-window: #c0c0c0;
   --window-container-outline: none;
-  --window-container-box-shadow: 1px 1px rgb(140, 140, 140), 3px 2px rgb(0, 0, 0), -1px -1px rgb(222, 222, 222), -2px -2px white, -2px 2px white,  3px -2px black;
+  --window-container-box-shadow: 1px 1px rgb(140, 140, 140), 2px 2px rgb(0, 0, 0), -1px -1px rgb(222, 222, 222), -2px -2px white, -2px 2px white,  2px -2px black;
 
   --box-shadow-color: #888888;
   --window-header-background: #000080;
   --window-header-padding: 5px 5px;
   --close-button-background: var(--border-color-window);
-  --close-button-background-image: url(windows-close.svg);
+  --close-button-background-image: url(../images/windows-close.svg);
   --link-color: blue;
   --error-background: #8B0000;
   --error-content-background: #FFF0F0;
@@ -101,7 +101,7 @@ body.whack {
   --window-header-background: rgba(204, 204, 204, 1);
   --window-header-padding: 4px 4px;
   --close-button-background: var(--border-color-window);
-  --close-button-background-image: url(mac-close.svg);
+  --close-button-background-image: url(../images/mac-close.svg);
   --link-color: blue;
   --error-background: inherit;
   --error-content-background: white;
