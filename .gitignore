@@ -65,21 +65,12 @@ typings/
 .cache
 .parcel-cache
 
-# next.js build output
+# next.js, Nuxt.js, Gatsby, and VuePress build outputs
 .next
 out
-
-# Nuxt.js build / generate output
 .nuxt
 dist
-
-# Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-#public
-
-# vuepress build output
 .vuepress/dist
 
 # Serverless directories
@@ -105,8 +96,34 @@ dist
 !.yarn/sdks/
 !.yarn/versions/
 
-# IntelliJ project files
+# IntelliJ IDEA project files
 .idea/
 *.iml
 *.ipr
 *.iws
+
+# macOS files
+.DS_Store
+
+# Windows image file caches
+Thumbs.db
+
+# Windows Folder config file
+Desktop.ini
+
+# [OPTIONAL] linux: KDE directory preferences
+.directory
+
+# [OPTIONAL] Jekyll build artifacts
+_site
+
+# [OPTIONAL] Sphinx documentation build output
+_build/
+
+# [OPTIONAL] Virtualenv
+venv/
+ENV/
+env/
+
+
+cypress-image-diff-html-report/
