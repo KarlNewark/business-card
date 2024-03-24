@@ -12,42 +12,60 @@
   font-style: normal;
 }
 
+:root {
+  --color-black: rgba(0, 0, 0, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-bright-red: rgba(212, 0, 0, 1);
+  --color-blue: rgba(0, 0, 255, 1);
+  --color-bisque: rgba(255, 228, 196, 1);
+}
 
 body.binbows {
+  --color-teal: rgba(0, 128, 128, 1);
+  --color-silver: rgba(192, 192, 192, 1);
+  --color-light-gray: rgba(194, 194, 194, 1);
+  --color-dark-gray: rgba(128, 128, 128, 1);
+  --color-navy-blue: rgba(0, 0, 128, 1);
+  --color-dark-red: rgba(139, 0, 0, 1);
+  --color-very-pale-red: rgba(255, 240, 240, 1);
+  --color-medium-gray: rgba(140, 140, 140, 1);
+  --color-gray: rgba(222, 222, 222, 1);
+
+
+
+
   --font-family-headings: 'WIN95', 'Arial', sans-serif;
   --font-family-body: 'Arial', sans-serif;
   --font-family-monospace: 'Courier New', monospace;
   --window-content-margin: 3px;
-  --window-background-color-window: var(--border-color-window);
+  --window-background-color-window: var(--color-silver);
 
-  --window-content-border-left: 1px solid black;
-  --window-content-border-top:  1px solid black;
-  --window-content-border-right: 1px solid rgb(194, 194, 194);
-  --window-content-border-bottom: 1px solid rgb(194, 194, 194);
-  --window-content-box-shadow: 1px 1px white, -1px -1px rgb(128, 128, 128);
+  --window-content-border-left: 1px solid var(--color-black);
+  --window-content-border-top:  1px solid var(--color-black);
+  --window-content-border-right: 1px solid var(--color-light-gray);
+  --window-content-border-bottom: 1px solid var(--color-light-gray);
+  --window-content-box-shadow: 1px 1px var(--color-white), -1px -1px var(--color-dark-gray);
 
  
   --window-content-font-family: var(--font-family-body);
-  --background-color-body: #008080;
-  --color-default-text: black;
-  --header-title-text-colour: white;
-  --color-white: white;
-  --color-black: black;
-  --border-color-window: #c0c0c0;
+  --background-color-body: var(--color-teal);
+  --color-default-text: var(--color-black);
+  --header-title-text-colour: var(--color-white);
+  --border-color-window: var(--color-silver);
   --window-container-outline: none;
-  --window-container-box-shadow: 1px 1px rgb(140, 140, 140), 2px 2px rgb(0, 0, 0), -1px -1px rgb(222, 222, 222), -2px -2px white, -2px 2px white,  2px -2px black;
+  --window-container-box-shadow: 1px 1px var(--color-medium-gray), 2px 2px var(--color-black), -1px -1px var(--color-gray), -2px -2px var(--color-white), -2px 2px var(--color-white),  2px -2px var(--color-black);
 
-  --box-shadow-color: #888888;
-  --window-header-background: #000080;
+  --box-shadow-color: rgba(136, 136, 136, 1);
+  --window-header-background: var(--color-navy-blue);
   --window-header-padding: 5px 5px;
-  --close-button-background: var(--border-color-window);
+  --close-button-background: var(--color-silver);
   --close-button-background-image: url(../images/windows-close.svg);
-  --link-color: blue;
-  --error-background: #8B0000;
-  --error-content-background: #FFF0F0;
-  --bootup-shutdown-background: black;
-  --shutdown-color: bisque;
-  --pdf-icon-color: #D40000;
+  --link-color: var(--color-blue);
+  --error-background: var(--color-dark-red);
+  --error-content-background: var(--color-very-pale-red);
+  --bootup-shutdown-background: var(--color-black);
+  --shutdown-color: var(--color-bisque);
+  --pdf-icon-color: var(--color-bright-red);
   --title-text-align: left;
   --window-title-justify-content: left;
   --window-header-fontsize: 1.2em;
@@ -56,13 +74,13 @@ body.binbows {
   --window-header-margin: 2px;
   --close-text-display: inline;
 
-  --window-object-count-border-left: 1px solid rgb(128, 128, 128);
-  --window-object-count-border-right: 1px solid white;
-  --window-object-count-border-top: 1px solid rgb(128, 128, 128);
-  --window-object-count-border-bottom:  1px solid white;
+  --window-object-count-border-left: 1px solid var(--color-dark-gray);
+  --window-object-count-border-right: 1px solid var(--color-white);
+  --window-object-count-border-top: 1px solid var(--color-dark-gray);
+  --window-object-count-border-bottom: 1px solid var(--color-white);
   --window-object-count-font: var(--font-family-headings);
   --window-object-count-margin: 2px;
-  --window-object-count-padding:  5px;
+  --window-object-count-padding: 5px;
   --window-object-count-display: block;
   --window-object-count-box-shadow: none;
   --window-object-count-background: none;
@@ -70,44 +88,50 @@ body.binbows {
 
   --window-object-count-binbows-text-display: inline;
   --window-object-count-whack-text-display: none;
-
   
+
 }
 
 
 body.whack {
+  --color-dark-gray: rgba(38, 38, 38, 1);
+  --another-grey: rgb(128, 128, 128); //todo name
+  --color-medium-dark-gray: rgba(138, 138, 138, 1);
+  --color-light-blue: rgba(84, 103, 156, 1);
+  --color-lighter-gray: rgba(186, 186, 186, 1);
+  --acolor: rgba(204, 204, 204, 1); // fix this name
+  --color-very-light-gray: rgba(237, 237, 237, 1);
+  --box-shadow-color: none;
+
   --font-family-headings: 'Virtue', sans-serif;
   --font-family-body: 'Arial', sans-serif;
   --font-family-monospace: 'Courier New', monospace;
   --window-content-margin: 5px;
   --window-content-outline: none;
-  --window-content-border: 1px solid rgb(38, 38, 38);
+  --window-content-border: 1px solid var(--color-dark-gray);
   --window-content-border-left: var(--window-content-border);
-  --window-content-border-top:  var(--window-content-border);
+  --window-content-border-top: var(--window-content-border);
   --window-content-border-right: var(--window-content-border);
   --window-content-border-bottom: var(--window-content-border);
-  --window-content-box-shadow: -1px -1px rgb(138, 138, 138), 1px 1px white;
+  --window-content-box-shadow: -1px -1px var(--color-medium-dark-gray), 1px 1px var(--color-white);
   --window-content-font-family: 'geneva', sans-serif;
   --window-background-color-window: var(--window-header-background);
-  --background-color-body: rgb(84 103 156);
-  --color-default-text: black;
-  --header-title-text-colour: black;
-  --color-white: white;
-  --color-black: black;
-  --border-color-window: rgb(186, 186, 186);
-  --window-container-outline: 1px solid rgb(38, 38, 38);
-  --window-container-box-shadow: 3px 3px 0px var(--box-shadow-color);
-  --box-shadow-color: none;
-  --window-header-background: rgba(204, 204, 204, 1);
+  --background-color-body: var(--color-light-blue);
+  --color-default-text: var(--color-black);
+  --header-title-text-colour: var(--color-black);
+  --border-color-window: var(--color-lighter-gray);
+  --window-container-outline: 1px solid var(--color-dark-gray);
+  --window-container-box-shadow: 3px 3px 0px var(--box-shadow-color); 
+  --window-header-background: var(--acolor);
   --window-header-padding: 4px 4px;
   --close-button-background: var(--border-color-window);
   --close-button-background-image: url(../images/mac-close.svg);
-  --link-color: blue;
+  --link-color: var(--color-blue);
   --error-background: inherit;
-  --error-content-background: white;
-  --bootup-shutdown-background: black;
-  --shutdown-color: bisque;
-  --pdf-icon-color: #D40000;
+  --error-content-background: var(--color-white);
+  --bootup-shutdown-background: var(--color-black);
+  --shutdown-color: var(--color-bisque);
+  --pdf-icon-color: var(--color-bright-red);
   --title-text-align: center;
   --window-title-justify-content: center;
   --window-header-fontsize: 1.0em;
@@ -124,13 +148,13 @@ body.whack {
   --window-object-count-margin: -6px 5px 4px 5px;
   --window-object-count-padding: 0;
   --window-object-count-display: block;
-  --window-object-count-box-shadow: 1px 1px white, -1px 0px rgb(128, 128, 128);
-  --window-object-count-background:  rgb(237, 237, 237);
+  --window-object-count-box-shadow: 1px 1px var(--color-white), -1px 0px var(--another-grey);
+  --window-object-count-background: var(--color-very-light-gray);
   --window-object-count-text-align: center;
-
+  
   --window-object-count-binbows-text-display: none;
   --window-object-count-whack-text-display: inline;
-}
+  }
 
 .window-title {
   display: flex;
