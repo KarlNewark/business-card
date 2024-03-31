@@ -127,4 +127,4 @@ env/
 
 
 cypress-image-diff-html-report/
-cypress-image-diff-screenshots/comparison/
+# cypress-image-diff-screenshots/comparison/
