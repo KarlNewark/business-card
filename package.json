@@ -6,7 +6,11 @@
   "scripts": {
     "build:scss": "sass source/scss/:build/css/ --no-source-map",
     "build:eleventy": "eleventy",
-    "build": "npm run build:scss && npm run build:eleventy"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "build": "npm run build:scss && npm run build:eleventy",
+    "start": "npm run build && http-server ./build -p 8080",
+    "test": "npm run cypress:run"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +20,7 @@
     "cypress": "^13.7.1",
     "cypress-image-diff-html-report": "^2.0.2",
     "cypress-image-diff-js": "^2.1.4",
+    "http-server": "^14.1.1",
     "sass": "^1.72.0"
   }
 }

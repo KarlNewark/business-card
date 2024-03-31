@@ -8,5 +8,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return getCompareSnapshotsPlugin(on, config);
     },
+    viewportWidth: 1920,
+    viewportHeight: 1080,
   },
 });
