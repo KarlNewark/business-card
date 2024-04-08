@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const bootupScreen = document.getElementById("bootup-screen");
+  const bootupScreenWhack = document.getElementById("bootup-screen-whack");
   const mainWindow = document.getElementById("main-window");
   const errorWindow = document.getElementById("error-window");
   const shutdownScreen = document.getElementById("shutdown-screen");
@@ -7,7 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeMainBtn = document.getElementById("close-main");
   const closeErrorBtn = document.getElementById("close-error");
 
-  const fadeOutBootup = () => bootupScreen.classList.add("fade-out");
+  const fadeOutBootup = () => {
+    bootupScreen.classList.add("fade-out");
+    bootupScreenWhack.classList.add("fade-out")
+  };
+
 
   const shutdownSequence = () => {
     errorWindow.style.display = "none";
@@ -49,12 +54,14 @@ function makeDraggable(dragHandle, dragTarget) {
 
 
   dragHandle.addEventListener("mousedown", (e) => {
+
+    height = dragTarget.offsetHeight;
+    width = dragTarget.offsetWidth;
+    initX = e.offsetX;
+    initY = e.offsetY;
+
     if (!dragged) {
       const compStyles = window.getComputedStyle(dragTarget);
-      height = dragTarget.offsetHeight;
-      width = dragTarget.offsetWidth;
-      initX = e.offsetX;
-      initY = e.offsetY;
       e.preventDefault();
 
       let cy = Math.max(0, Math.min(window.innerHeight - height, e.clientY - initY));
@@ -95,22 +102,23 @@ headers.forEach((header) => {
 });
 
 
-function detectDeviceAndUpdateBodyClass() {
+function detectDeviceAndUpdateOsTheme() {
   const platform = navigator.platform.toLowerCase();
   const userAgent = navigator.userAgent.toLowerCase();
 
-  let deviceClass = '';
+  let osTheme = 'whack';
 
   if (platform.includes('mac')) {
-    deviceClass = 'mac';
-  } else if (/iphone|ipod/.test(userAgent)) {
-    deviceClass = 'iphone';
+    osTheme = 'whack';
+  } else if (/iphone|ipod|ipad/.test(userAgent)) {
+    osTheme = 'whack';
   }
 
-  if (deviceClass) {
-    document.body.classList.remove('binbows')
-    document.body.classList.add('whack');
+  if (osTheme) {
+    document.body.setAttribute('os-theme', osTheme);
+  } else {
+    document.body.removeAttribute('os-theme');
   }
 }
 
-detectDeviceAndUpdateBodyClass();
+detectDeviceAndUpdateOsTheme();

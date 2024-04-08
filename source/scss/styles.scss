@@ -12,6 +12,8 @@
   font-style: normal;
 }
 
+
+
 :root {
   --color-black: rgba(0, 0, 0, 1);
   --color-white: rgba(255, 255, 255, 1);
@@ -20,7 +22,7 @@
   --color-bisque: rgba(255, 228, 196, 1);
 }
 
-body.binbows {
+body[os-theme="binbows"] {
   --color-teal: rgba(0, 128, 128, 1);
   --color-silver: rgba(192, 192, 192, 1);
   --color-light-gray: rgba(194, 194, 194, 1);
@@ -59,7 +61,7 @@ body.binbows {
   --window-header-background: var(--color-navy-blue);
   --window-header-padding: 5px 5px;
   --close-button-background: var(--color-silver);
-  --close-button-background-image: url(../images/windows-close.svg);
+  --close-button-background-image: url(../images/alt-windows-close.svg);
   --link-color: var(--color-blue);
   --error-background: var(--color-dark-red);
   --error-content-background: var(--color-very-pale-red);
@@ -88,12 +90,17 @@ body.binbows {
 
   --window-object-count-binbows-text-display: inline;
   --window-object-count-whack-text-display: none;
+
+  //replace with web component functionality
+  --binbows-shutdown-content-display: block;
+  --whack-shutdown-content-display: none;
+
   
 
 }
 
 
-body.whack {
+body[os-theme="whack"] {
   --color-dark-gray: rgba(38, 38, 38, 1);
   --another-grey: rgb(128, 128, 128); //todo name
   --color-medium-dark-gray: rgba(138, 138, 138, 1);
@@ -103,9 +110,12 @@ body.whack {
   --color-very-light-gray: rgba(237, 237, 237, 1);
   --box-shadow-color: none;
 
+  --bootup-color: rgba(136, 136, 136, 1);
+
   --font-family-headings: 'Virtue', sans-serif;
   --font-family-body: 'Arial', sans-serif;
   --font-family-monospace: 'Courier New', monospace;
+  --font-family-serif: Garamond, Georgia, serif;
   --window-content-margin: 5px;
   --window-content-outline: none;
   --window-content-border: 1px solid var(--color-dark-gray);
@@ -154,6 +164,40 @@ body.whack {
   
   --window-object-count-binbows-text-display: none;
   --window-object-count-whack-text-display: inline;
+
+  //replace with web component functionality
+  --binbows-shutdown-content-display: none;
+  --whack-shutdown-content-display: block;
+  #whack-startup-window {
+    text-align: center;
+
+      --window-content-margin: 35px 50px;
+      .progress-bar {
+        width: 100%;
+
+        border: 1px solid var(--color-dark-gray);
+        // border-right: 1px solid white;
+        // border-bottom: 1px solid white;
+        box-shadow: white -2px -2px 0px 0px inset, var(--another-grey) 2px 2px 0px 0px inset;    
+        background-color: rgb(186, 186, 186);
+
+        height: 20px;
+        position: relative;
+
+        width: 60%;
+
+        margin: 20px 20%;
+      }
+      
+      .progress {
+        border: 1px solid rgb(12, 12, 94);
+        background: rgb(141, 141, 242);
+        height: calc(100% - 2px);
+        box-shadow: rgb(38, 38, 135) 0px 0px 8px 2px inset;
+        transition: width 0.4s ease-in-out;
+      }
+    }
+
   }
 
 .window-title {
@@ -265,6 +309,15 @@ body {
   font-family: var(--window-content-font-family);
   box-shadow: var(--window-content-box-shadow);
 }
+#whack-startup-window .window-content {
+  font-family: var(--font-family-serif);
+  flex-direction: column;
+  align-items: center;
+  font-size: 60px;
+  img {
+    max-width: 225px;
+  }
+}
 
 a {
   color: var(--link-color);
@@ -325,6 +378,14 @@ a:hover {
   font-family: var(--font-family-monospace);
   z-index: 9999;
   display: none;
+
+  .shutdown-content.whack {
+    display: var(--whack-shutdown-content-display);
+  }
+
+  .shutdown-content.binbows {
+    display: var(--binbows-shutdown-content-display);
+  }
 }
 
 .shutdown-screen.present {
@@ -437,7 +498,7 @@ a:hover {
   }
 
   .photo {
-    width: 200px;
+    width: 180px;
     margin-right: 20px;
   }
 }
@@ -501,6 +562,23 @@ a:hover {
   clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
 
+.bootup-screen-whack {
+background-color: var(--bootup-color);
+  justify-content: center;
+  padding-top: 35%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-family: var(--font-family-monospace);
+  z-index: 9999;
+
+  img{
+    height: 180px;
+  }
+}
+
 @keyframes glitchBottom {
 
   90.2%,
@@ -517,3 +595,4 @@ a:hover {
     transform: translate(-22px, 5px) skew(21deg);
   }
 }
+

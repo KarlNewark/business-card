@@ -7,17 +7,20 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
-<body class="binbows">
+<body os-theme="binbows">
     <div aria-hidden="true" class="refresh"></div>
 
     <div aria-hidden="true" style="padding-top:50px;background:transparent;color:white;"></div>
     <div id="shutdown-screen" class="shutdown-screen">
-        <div class="shutdown-text scroll">
+        <div class="shutdown-content binbows">
             It is now safe to turn off your computer...
+        </div>
+        <div class="shutdown-content whack">
+            <img src="images/image.svg" alt="">
         </div>
     </div>
 
-    <div aria-hidden="true" id="bootup-screen" class="bootup-screen">
+    <div aria-hidden="true" id="bootup-screen" class="bootup-screen binbows">
         <div id="boot-text" class="boot-text scroll">
             <pre>Starting Michaelsoft Binbows 3.1...
 
@@ -48,10 +51,15 @@ Configuring system...
         </pre>
         </div>
     </div>
+
+    <div aria-hidden="true" id="bootup-screen-whack" class="bootup-screen-whack">
+        <img src="images\startup-icon 1.svg" />
+    </div>
+
     <div id="main-window" class="window-container">
         <div class="window-header">
             <span class="window-title"><span class="pre-handle"></span><span class="handle"></span><span class="post-handle"></span><span class="window-title-text">Personal Profile</span><span class="pre-handle"></span><span class="handle"></span><span class="post-handle"></span></span>
-            <button class="close-button" id="close-main" aria-label="Close"><span class="close-text">x</span></button>
+            <button class="close-button" id="close-main" aria-label="Close"></button>
         </div>
         <div class="window-content">
             <img class="photo" src="images/1706662083409-2.png" alt="image of me" />
@@ -99,10 +107,26 @@ Configuring system...
         </div>
 
     </div>
+
+    <div id="whack-startup-window" class="window-container">
+
+        <div class="window-content">
+            <img src="images/placeholder-logo.png" />
+            Whack OS 9.2
+        </div>
+        Starting up...
+        <div class="progress-bar">
+  <div class="progress" style="width: 60%;"></div>
+</div>
+
+
+    </div>
+
+
     <div aria-hidden="true" class="window-container error-window" id="error-window" style="display: none;">
         <div class="window-header">
             <span class="window-title"><span class="pre-handle"></span><span class="handle"></span><span class="post-handle"></span><span class="window-title-text">Program Error</span><span class="pre-handle"></span><span class="handle"></span><span class="post-handle"></span></span>
-            <button class="close-button" id="close-error" aria-label="Close"><span class="close-text">x</span></button>
+            <button class="close-button" id="close-error" aria-label="Close"></button>
         </div>
         <div class="window-content">
             <div class="window-text">
