@@ -39,6 +39,7 @@ body[os-theme="binbows"] {
   --font-family-headings: 'WIN95', 'Arial', sans-serif;
   --font-family-body: 'Arial', sans-serif;
   --font-family-monospace: 'Courier New', monospace;
+  --font-family-serif: 'Times New Roman', Times, serif;
   --window-content-margin: 3px;
   --window-background-color-window: var(--color-silver);
 
@@ -87,6 +88,12 @@ body[os-theme="binbows"] {
   --window-object-count-box-shadow: none;
   --window-object-count-background: none;
   --window-object-count-text-align: left;
+
+  --startup-window-image: url(/images/windows_logo.svg);
+  --startup-window-text: 'Binbows 95';
+
+  --progress-background: url(/images/binbows-progress-background.svg) 0% 0% / contain repeat-x;
+  --progress-height: calc(100% - 2px);
 
   --window-object-count-binbows-text-display: inline;
   --window-object-count-whack-text-display: none;
@@ -162,43 +169,54 @@ body[os-theme="whack"] {
   --window-object-count-background: var(--color-very-light-gray);
   --window-object-count-text-align: center;
   
+  --startup-window-image:  url(/images/placeholder-logo.png);
+  --startup-window-text: 'Whack OS 9.2';
+
   --window-object-count-binbows-text-display: none;
   --window-object-count-whack-text-display: inline;
+
+  --progress-bar-box-shadow: white -2px -2px 0px 0px inset, var(--another-grey) 2px 2px 0px 0px inset;    
+  --progress-background: var(color-lighter-gray);
+
+  --progress-border:  1px solid rgb(12, 12, 94);
+  --progress-background: rgb(141, 141, 242);
+  --progress-height: calc(100% - 2px);
+  --progress-box-shadow: rgb(38, 38, 135) 0px 0px 8px 2px inset;
 
   //replace with web component functionality
   --binbows-shutdown-content-display: none;
   --whack-shutdown-content-display: block;
-  #whack-startup-window {
-    text-align: center;
 
-      --window-content-margin: 35px 50px;
-      .progress-bar {
-        width: 100%;
+}
 
-        border: 1px solid var(--color-dark-gray);
-        // border-right: 1px solid white;
-        // border-bottom: 1px solid white;
-        box-shadow: white -2px -2px 0px 0px inset, var(--another-grey) 2px 2px 0px 0px inset;    
-        background-color: rgb(186, 186, 186);
+#main-window {
+  display: none;
+}
 
-        height: 20px;
-        position: relative;
+.booted #main-window {
+  display: block;
+}
 
-        width: 60%;
+.error #error-window {
+  display: block;
+}
 
-        margin: 20px 20%;
-      }
-      
-      .progress {
-        border: 1px solid rgb(12, 12, 94);
-        background: rgb(141, 141, 242);
-        height: calc(100% - 2px);
-        box-shadow: rgb(38, 38, 135) 0px 0px 8px 2px inset;
-        transition: width 0.4s ease-in-out;
-      }
-    }
+.shutdown .shutdown-screen {
+  display: flex;
+}
 
+body:not(.booting){
+  #bootup-screen-whack{
+    animation: fadeOut 0.1s;
+    animation-fill-mode: forwards;
   }
+
+  #bootup-screen{
+    animation: fadeOut 0.1s;
+    animation-fill-mode: forwards;
+  }
+}
+
 
 .window-title {
   display: flex;
@@ -309,14 +327,20 @@ body {
   font-family: var(--window-content-font-family);
   box-shadow: var(--window-content-box-shadow);
 }
-#whack-startup-window .window-content {
+.startup-window .window-content {
   font-family: var(--font-family-serif);
   flex-direction: column;
   align-items: center;
   font-size: 60px;
   img {
     max-width: 225px;
+    content:var(--startup-window-image);
   }
+  
+  span::before {
+    content: var(--startup-window-text);
+  }
+  
 }
 
 a {
@@ -340,18 +364,22 @@ a:hover {
 
 .error-window {
   margin-top: 20px;
+  display: none;
+
+  .window-header {
+    background-color: var(--error-background);
+  }
+
+  .window-content {
+    background-color: var(--error-content-background);
+    color: var(--color-black);
+  }
 }
 
-.error-window .window-header {
-  background-color: var(--error-background);
-}
 
-.error-window .window-content {
-  background-color: var(--error-content-background);
-  color: var(--color-black);
-}
 
-.bootup-screen {
+
+body[os-theme="binbows"] .bootup-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -362,6 +390,33 @@ a:hover {
   display: flex;
   font-family: var(--font-family-monospace);
   z-index: 9999;
+}
+
+body[os-theme="whack"] {
+
+  .bootup-screen-whack {
+    background-color: var(--bootup-color);
+    justify-content: center;
+    //padding-top: 35%;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-family: var(--font-family-monospace);
+    z-index: 9999;
+
+    img {
+      height: 180px;
+    }
+  }
+
+  .bootup-screen {
+    display: none;
+  }
+
 }
 
 .shutdown-screen {
@@ -388,14 +443,46 @@ a:hover {
   }
 }
 
-.shutdown-screen.present {
-  display: flex;
-}
+// .shutdown-screen.present {
+//   display: flex;
+// }
 
-.fade-out {
-  animation: fadeOut 0.1s;
-  animation-fill-mode: forwards;
-}
+// .fade-out {
+//   animation: fadeOut 0.1s;
+//   animation-fill-mode: forwards;
+// }
+
+.startup-window {
+  display: none;
+  text-align: center;
+
+    --window-content-margin: 35px 50px;
+    .progress-bar {
+      width: 100%;
+
+      border: 1px solid var(--color-dark-gray);
+      box-shadow: var(--progress-bar-box-shadow);    
+      background: var(--progress-bar-background);
+
+      height: 20px;
+      position: relative;
+
+      width: 60%;
+
+      margin: 20px 20%;
+    }
+    
+    .progress {
+      border: var(--progress-border);
+      background:var(--progress-background);
+      height: var(--progress-height);
+      box-shadow: var(--progress-box-shadow);
+    }
+  }
+
+  .splash-screen-time .startup-window {
+    display: block;
+  }
 
 @keyframes fadeOut {
   100% {
@@ -413,7 +500,7 @@ a:hover {
 }
 
 .bootup-screen .boot-text.scroll {
-  animation: scrollBootText 3s steps(1);
+  animation: scrollBootText 1.5s steps(1);
 }
 
 @keyframes scrollBootText {
@@ -562,22 +649,7 @@ a:hover {
   clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
 
-.bootup-screen-whack {
-background-color: var(--bootup-color);
-  justify-content: center;
-  padding-top: 35%;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  font-family: var(--font-family-monospace);
-  z-index: 9999;
 
-  img{
-    height: 180px;
-  }
-}
 
 @keyframes glitchBottom {
 
@@ -596,3 +668,24 @@ background-color: var(--bootup-color);
   }
 }
 
+@keyframes fillProgressBarRandomly {
+  0% {
+      width: 0%;
+  }
+  25% {
+      width: 10%;
+  }
+  50% {
+      width: 15%;
+  }
+  75% {
+      width: 87%;
+  }
+  100% {
+      width: 100%;
+  }
+}
+
+.progress {
+  animation: fillProgressBarRandomly 2.5s forwards;
+}

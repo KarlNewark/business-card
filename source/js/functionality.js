@@ -1,42 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const body = document.getElementsByTagName("body")[0];
   const bootupScreen = document.getElementById("bootup-screen");
   const bootupScreenWhack = document.getElementById("bootup-screen-whack");
   const mainWindow = document.getElementById("main-window");
   const errorWindow = document.getElementById("error-window");
   const shutdownScreen = document.getElementById("shutdown-screen");
   const bootText = document.getElementById("boot-text");
-  const closeMainBtn = document.getElementById("close-main");
-  const closeErrorBtn = document.getElementById("close-error");
+  const closeMainBtn = document.getElementById("close-main-window");
+  const closeErrorBtn = document.getElementById("close-error-window");
+  const startupSplashScreen = document.getElementsByClassName("startup-window")[0];
 
-  const fadeOutBootup = () => {
-    bootupScreen.classList.add("fade-out");
-    bootupScreenWhack.classList.add("fade-out")
-  };
 
+  const splashScreen = () => {
+    body.className="";
+    body.classList.add('splash-screen-time');
+    setTimeout(()=>{
+      body.classList.remove('splash-screen-time');
+      body.classList.add('booted');
+    }, 2500)
+
+  }
+  
+  setTimeout(splashScreen, 1500);
 
   const shutdownSequence = () => {
-    errorWindow.style.display = "none";
-    bootupScreen.style.display = "block";
+
+    
 
     setTimeout(() => {
+
+
       shutdownScreen.classList.add("present");
       bootText.classList.remove("scroll");
 
+      body.classList.add('shutdown');
+      body.classList.remove('error');
+
       setTimeout(() => {
-        shutdownScreen.classList.remove("present");
-        bootupScreen.classList.remove("fade-out");
+
+        body.classList.add('booting');
+        body.classList.remove('shutdown');
+
         bootText.classList.add("scroll");
-        setTimeout(fadeOutBootup, 3000);
-        mainWindow.style.display = "block";
+        setTimeout(splashScreen, 3000);
+        //mainWindow.style.display = "block";
       }, 2000); // Duration of bootup sequence
     }, 1500); // Duration of shutdown sequence
   };
 
-  setTimeout(fadeOutBootup, 3000);
-
   closeMainBtn.addEventListener("click", () => {
-    errorWindow.style.display = "block";
-    mainWindow.style.display = "none";
+    body.classList.add('error');
+    body.classList.remove('booted');
     setTimeout(shutdownSequence, 2000); // Time until shutdown sequence starts
   });
 
@@ -93,10 +107,10 @@ function makeDraggable(dragHandle, dragTarget) {
 
 }
 
-const headers = document.querySelectorAll(".window-header");
+const headers = document.querySelectorAll(".window-title");
 
 headers.forEach((header) => {
-  const windowContainer = header.parentElement;
+  const windowContainer = header.closest('.window-container');
 
   makeDraggable(header, windowContainer);
 });
@@ -106,7 +120,7 @@ function detectDeviceAndUpdateOsTheme() {
   const platform = navigator.platform.toLowerCase();
   const userAgent = navigator.userAgent.toLowerCase();
 
-  let osTheme = 'whack';
+  let osTheme = 'binbows';
 
   if (platform.includes('mac')) {
     osTheme = 'whack';
