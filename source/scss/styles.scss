@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
 @font-face {
   font-family: 'WIN95';
   src: url('../fonts/W95FA.otf') format('opentype');
@@ -122,7 +124,8 @@ body[os-theme="whack"] {
   --font-family-headings: 'Virtue', sans-serif;
   --font-family-body: 'Arial', sans-serif;
   --font-family-monospace: 'Courier New', monospace;
-  --font-family-serif: Garamond, Georgia, serif;
+
+    --font-family-serif: 'EB Garamond', Georgia, serif;
   --window-content-margin: 5px;
   --window-content-outline: none;
   --window-content-border: 1px solid var(--color-dark-gray);
@@ -214,6 +217,10 @@ body:not(.booting){
   #bootup-screen{
     animation: fadeOut 0.1s;
     animation-fill-mode: forwards;
+  }
+
+  #bootup-screen-whack{
+    display: none;
   }
 }
 
@@ -326,21 +333,6 @@ body {
   border-bottom: var(--window-content-border-bottom);
   font-family: var(--window-content-font-family);
   box-shadow: var(--window-content-box-shadow);
-}
-.startup-window .window-content {
-  font-family: var(--font-family-serif);
-  flex-direction: column;
-  align-items: center;
-  font-size: 60px;
-  img {
-    max-width: 225px;
-    content:var(--startup-window-image);
-  }
-  
-  span::before {
-    content: var(--startup-window-text);
-  }
-  
 }
 
 a {
@@ -456,7 +448,24 @@ body[os-theme="whack"] {
   display: none;
   text-align: center;
 
-    --window-content-margin: 35px 50px;
+  .window-content {
+    font-family: var(--font-family-serif);
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(12px, 11.5vw, 60px);
+    img {
+      max-width: 225px;
+      width: 100%;
+      content:var(--startup-window-image);
+    }
+    
+    span::before {
+      content: var(--startup-window-text);
+    }
+    
+  }
+
+    --window-content-margin: 15px 10px;
     .progress-bar {
       width: 100%;
 
@@ -568,9 +577,12 @@ body[os-theme="whack"] {
 
 
 .photo {
-  width: 100%;
   max-width: 350px;
   margin-bottom: 30px;
+  width: auto;
+  max-width: 350px;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .window-text {
@@ -585,9 +597,15 @@ body[os-theme="whack"] {
   }
 
   .photo {
-    width: 180px;
+    min-width: 180px;
+    max-width: 200px;
     margin-right: 20px;
   }
+
+  .startup-window{
+    --window-content-margin: 35px 50px;
+  }
+
 }
 
 .window-text p:first-child {
@@ -595,7 +613,7 @@ body[os-theme="whack"] {
 }
 
 .window-container {
-  animation: glitch 10s linear infinite;
+  animation: glitch 6s linear infinite;
 }
 
 @keyframes glitch {
@@ -623,7 +641,7 @@ body[os-theme="whack"] {
 }
 
 .window-container:before {
-  animation: glitchTop 10s linear infinite;
+  animation: glitchTop 5s linear infinite;
   clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
 }
 
@@ -645,7 +663,7 @@ body[os-theme="whack"] {
 }
 
 .window-container:after {
-  animation: glitchBottom 15s linear infinite;
+  animation: glitchBottom 7.5s linear infinite;
   clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
 
