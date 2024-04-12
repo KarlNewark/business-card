@@ -8,7 +8,7 @@ module.exports = function(eleventyConfig) {
     return {
         dir: {
             input: 'source', 
-            output: 'build'  
+            output: 'docs'  
         },
         htmlTemplateEngine: 'njk',
         markdownTemplateEngine: 'njk'

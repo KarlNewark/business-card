@@ -576,13 +576,20 @@ body[os-theme="whack"] {
 }
 
 
-.photo {
-  max-width: 350px;
+.photo-frame {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
   margin-bottom: 30px;
-  width: auto;
-  max-width: 350px;
-  min-width: 100%;
-  min-height: 100%;
+}
+
+.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .window-text {
@@ -596,10 +603,11 @@ body[os-theme="whack"] {
     align-items: flex-start;
   }
 
-  .photo {
+  .photo-frame {
     min-width: 180px;
     max-width: 200px;
-    margin-right: 20px;
+    padding: 0;
+    aspect-ratio: 1/1;
   }
 
   .startup-window{
