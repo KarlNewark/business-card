@@ -144,7 +144,7 @@ body[os-theme=whack] {
   --window-object-count-box-shadow: 1px 1px var(--color-white), -1px 0px var(--another-grey);
   --window-object-count-background: var(--color-very-light-gray);
   --window-object-count-text-align: center;
-  --startup-window-image: url(/images/placeholder-logo.png);
+  --startup-window-image: url(/images/whack_os_logo_01.svg);
   --startup-window-text: "Whack OS 9.2";
   --window-object-count-binbows-text-display: none;
   --window-object-count-whack-text-display: inline;

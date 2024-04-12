@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="mr_frowny_apple" data-name="mr frowny apple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 197 184.04">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #89a2d4;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        stroke: #00007f;
+      }
+
+      .cls-3, .cls-4 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 9px;
+      }
+
+      .cls-2 {
+        fill: #4a68c9;
+      }
+
+      .cls-4 {
+        stroke: #000;
+      }
+    </style>
+  </defs>
+  <path class="cls-2" d="M197,25.95h-87.93c9.81,25.56,8.93,52.78,8.93,80-8-3-18-14-21-10-12.52,19.2-10.42,43.96-20.43,65h120.43V25.95Z"/>
+  <path class="cls-1" d="M118,105.95c0-27.22.88-54.44-8.93-80H0v135h76.57c10.01-21.04,7.91-45.8,20.43-65,3-4,13,7,21,10Z"/>
+  <path class="cls-3" d="M90.4,125.25c23.67-1.06,52.19,1.78,81.35,14.25"/>
+  <path class="cls-4" d="M30.69,137.05s24.5-10.22,59.71-11.8"/>
+  <path class="cls-4" d="M97.6,2.38s26.72,42.84,19.61,103.81l-23.44-14.52s-.24,67.49-30.52,88.68"/>
+  <line class="cls-4" x1="33.33" y1="83.29" x2="33.33" y2="103.62"/>
+  <line class="cls-3" x1="169.33" y1="83.29" x2="169.33" y2="103.62"/>
+  <line class="cls-4" x1="27.78" y1="65.29" x2="46.89" y2="76.84"/>
+  <line class="cls-3" x1="176.57" y1="65.29" x2="157.45" y2="76.84"/>
+</svg>
