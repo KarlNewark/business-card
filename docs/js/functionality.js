@@ -38,6 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
 
+        let currentOs = document.body.getAttribute('os-theme');
+        if (currentOs == "whack") {
+          document.body.setAttribute('os-theme', 'binbows');
+        } else if (currentOs == "binbows") {
+          document.body.setAttribute('os-theme', 'whack');
+        }
+        
+
         body.classList.add('booting');
         body.classList.remove('shutdown');
 
