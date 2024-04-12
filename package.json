@@ -1,0 +1,29 @@
+{
+  "name": "business-card",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000b\u0000u\u0000s\u0000i\u0000n\u0000e\u0000s\u0000s\u0000-\u0000c\u0000a\u0000r\u0000d\u0000",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build:scss": "sass source/scss/:build/css/ --no-source-map",
+    "build:eleventy": "eleventy",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "build": "npm run build:scss && npm run build:eleventy",
+    "start": "npm run build && http-server ./build -p 8080",
+    "test": "npm run cypress:run",
+    "dev": "concurrently \"nodemon --watch source -e js,scss,njk --exec \\\"npm run build\\\"\" \"npm run start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "concurrently": "^8.2.2",
+    "cypress": "^13.7.1",
+    "cypress-image-diff-html-report": "^2.0.2",
+    "cypress-image-diff-js": "^2.1.4",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.0",
+    "sass": "^1.72.0"
+  }
+}
